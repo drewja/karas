@@ -6,42 +6,31 @@
                 "street": "1104 Academy Street",
                 "city": "Elroy",
                 "state": "Wisconsin",
-            "zip": "53929",
-            "coordinates": ["","",""],
+                "zip": "53929",
+                "coordinates": ["43.74816", "-89.87307"] },
             "phone": "6084628282",
             "fax": "6084628250",
-            "email": ""
-            },
-        "staff": ["","",""]
-    },
-    {
-        "name":"Necedah",
-        "address":{
-            "street": "1412 Wheelihan Avenue",
-            "city": "Necedah",
-            "state": "Wisconsin",
-            "zip": "",
-            "coordinates": ["","",""],
+            "email": "" },
+        {
+            "name":"Necedah",
+            "address":{
+                "street": "1412 Wheelihan Avenue",
+                "city": "Necedah",
+                "state": "Wisconsin",
+                "zip": "",
+                "coordinates": ["44.00815", "-90.06928"]},
             "phone": "6084628282",
             "fax": "",
-            "email": ""
-        },
-        "staff":["", "", ""]
-    },
-    {
-        "name":"Cottage Grove",
-        "address":{
-            "street": "2848 Cottage Grove Rd.",
-            "city": "Cottage Grove",
-            "state": "Wisconsin",
-            "zip": "53527",
-            "coordinates": ["","",""],
+            "email": "" },
+        {
+            "name":"Cottage Grove",
+            "address":{
+                "street": "2848 Cottage Grove Rd.",
+                "city": "Cottage Grove",
+                "state": "Wisconsin",
+                "zip": "53527",
+                "coordinates": ["43.090243", "-89.224976"]},
             "phone": "6084628282",
             "fax": "",
-            "email": ""
-        },
-        "staff":["", "", ""]
-    }
-    ]
-
-}
+            "email": "" }
+    ]}
