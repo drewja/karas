@@ -2,3 +2,10 @@ body {
   min-height: 2000px;
   padding-top: 70px;
 }
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand > img{
+  width:120px;
+  z-index:9999999999;
+}
