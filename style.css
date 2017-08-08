@@ -1,7 +1,15 @@
+/* Karas Dental Colors:
+   green: #629943,
+   blue: #4a5d82
+*/
 
 body {
   min-height: 2000px;
   padding-top: 50px;
+}
+
+#navbar li.active{
+  border:4px #4a5d82;
 }
 
 .navbar-brand {
@@ -10,7 +18,7 @@ body {
 
 .navbar-brand > img{
   width:120px;
-  z-index:9999999999;
+  z-index:100;
 }
 
 .jumbotron{  background-color:rgba(255,255,255, 0.8);
