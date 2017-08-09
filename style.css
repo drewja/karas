@@ -8,10 +8,6 @@ body {
   padding-top: 50px;
 }
 
-#navbar li.active{
-  border:4px #4a5d82;
-}
-
 .navbar-brand {
   padding: 0px;
 }
@@ -23,4 +19,30 @@ body {
 
 .jumbotron{  background-color:rgba(255,255,255, 0.8);
   color:black;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .navbar-brand {
+    margin-top: -15px;
+  }
+  .navbar-brand > img {
+    width: 180px;
+  }
+  .navbar-fixed-top {
+    padding: 25px;
+  }
 }
