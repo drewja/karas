@@ -4,7 +4,6 @@
 */
 
 body {
-  min-height: 2000px;
   padding-top: 50px;
 }
 
@@ -17,21 +16,40 @@ body {
   z-index:100;
 }
 
-.jumbotron{  background-color:rgba(255,255,255, 0.8);
-  color:black;
+#home { 
+  width:100%;
+  height:100%;
+  background-color:rgba(255,255,255, 0);
+  color: white;
+  text-shadow:0px 0px 10px black;
+  text-align: center;
+  margin-top: 100px;
 }
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
-
+#locations-right {
+  display: none;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
  }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-
+  #locations-dropdown {
+    display:none;
+  }
+  #locations-right {
+    display: block;
+  }
+  h1 {
+    font-size: 96px;
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
