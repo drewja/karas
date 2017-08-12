@@ -71,6 +71,10 @@ body {
 }
 /* Featurettes
 ------------------------- */
+.featurette-image{
+   max-width:100%;
+   height:auto;
+}
 
 .featurette-divider {
   margin: 5rem 0; /* Space out the Bootstrap <hr> more */

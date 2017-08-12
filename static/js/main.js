@@ -1,3 +1,11 @@
+var pages = {
+    'index' : "",
+    'contact': $('contact').detach(),
+    'about' : $('#about').detach(),
+    'services': $('#services').detach(),
+    'team': $('#team').detach()
+}
+var container = $('#content');
 var loadPage = {
     'index' : function(){
         $.backstretch(["./img/KarasDental_team.tall.jpg"]);
@@ -8,21 +16,19 @@ var loadPage = {
     'about' : function(){
 
     },
-    'contact' : function (){
 
-    },
     'services' : function(){
 
     },
     'team' : function(){
-        $('.page').load('drkaras.html');    
+        pages['team'].appendTo(container);
     }
 }
 
 function unloadPage(){
 
     if ($("body").data("backstretch")) $.backstretch('destroy');
-    $('.page').empty();
+    container.empty();
 }
 
 $('.navbar-nav>li>a').click(
