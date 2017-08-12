@@ -18,7 +18,7 @@ var loadPage = {
     },
 
     'services' : function(){
-
+        pages['services'].appendTo(container);
     },
     'team' : function(){
         pages['team'].appendTo(container);
@@ -40,7 +40,8 @@ $('.navbar-nav>li>a').click(
         t.parent().addClass('active')
         page = t.data('target');
         unloadPage();
+        console.log(page);
         loadPage[page]();
-        console.log(ev);
     }
-)
+);
+loadPage.index();
