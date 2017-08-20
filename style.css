@@ -6,7 +6,13 @@
 body {
   padding-top: 50px;
 }
-
+.container.page {
+  display: none;
+}
+#map_branches {
+  height: 400px;
+  width: 100%;
+ }
 .page {}
 
 .page-item {}
