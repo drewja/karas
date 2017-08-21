@@ -1,4 +1,9 @@
-var map = document.getElementById('map');
+$(document).ready(function () {
+    $("nav").find("li").on("click", "a", function () {
+        $('.navbar-collapse.in').collapse('hide');
+    });
+});
+
 var pages = {
     'index': $('#index'),
     'contact': $('#contact'),
@@ -37,7 +42,6 @@ function unloadPage() {
 
 $('.navbar-nav>li>a').click(
     function (ev) {
-        ev.preventDefault();
         t = $(ev.target);
         if (t.parent().hasClass('active')) return;
         $('.navbar-nav>.active').removeClass('active');

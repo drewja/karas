@@ -6,16 +6,15 @@
 body {
   padding-top: 50px;
 }
+
 .container.page {
   display: none;
 }
+
 #map_branches {
   height: 400px;
   width: 100%;
- }
-.page {}
-
-.page-item {}
+}
 
 .navbar-brand {
   padding: 0px;
@@ -27,7 +26,40 @@ body {
 }
 
 
+/* Featurettes
+------------------------- */
+
+.featurette-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+  /* Space out the Bootstrap <hr> more */
+}
+
+
+/* Thin out the marketing headings */
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+
 /* Extra small devices (phones, less than 768px) */
+
+@media (max-width: 768px) {
+  .featurette-image {
+    max-height: 150px;
+  }
+}
 
 
 /* No media query since this is the default in Bootstrap */
@@ -76,46 +108,5 @@ body {
   }
   .navbar-fixed-top {
     padding: 25px;
-  }
-}
-
-
-/* Featurettes
-------------------------- */
-
-.featurette-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.featurette-divider {
-  margin: 5rem 0;
-  /* Space out the Bootstrap <hr> more */
-}
-
-
-/* Thin out the marketing headings */
-
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
-}
-
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-@media (min-width: 40em) {}
-
-.featurette-heading {
-  font-size: 50px;
-}
-
-
-}
-@media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
   }
 }
