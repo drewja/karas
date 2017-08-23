@@ -1,0 +1,114 @@
+/* Karas Dental Colors:
+   green: #629943,
+   blue: #4a5d82
+*/
+
+body {
+  padding-top: 50px;
+}
+
+.container.page {
+  display: none;
+}
+
+#map_branches {
+  height: 400px;
+  width: 100%;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar-brand>img {
+  width: 120px;
+  z-index: 100;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+  /* Space out the Bootstrap <hr> more */
+}
+
+
+/* Thin out the marketing headings */
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+
+/* Extra small devices (phones, less than 768px) */
+.navbar-collapse.in {
+  overflow-y: inherit;
+}
+@media (max-width: 768px) {
+  .featurette-image {
+    max-height: 150px;
+  }
+}
+
+
+/* No media query since this is the default in Bootstrap */
+
+#locations-right {
+  display: none;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  #locations-dropdown {
+    display: none;
+  }
+  #locations-right {
+    display: block;
+  }
+  h1 {
+    font-size: 96px;
+  }
+}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+  #content {
+    margin-top: 50px;
+  }
+  .navbar-brand {
+    margin-top: -15px;
+  }
+  .navbar-brand>img {
+    width: 180px;
+  }
+  .navbar-fixed-top {
+    padding: 25px;
+  }
+}
