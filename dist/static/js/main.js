@@ -36,7 +36,7 @@ var unloader = {
 var loadPage = function (page) {
     collapseMenu();
     $(window).scrollTop(0);
-    if (pages[page]) pages[page].show().addClass('active');
+    pages[page].show().addClass('active');
     if (loaders[page]) loaders[page]();
 }
 
@@ -45,17 +45,20 @@ function unloadPage() {
     if (unloader[id]) unloader[id]();
 }
 
+function pageExists(page) {
+    if (pages[page]) return true;
+    return false;
+}
 
-$('#nav-main li>a').click(
+$('.navbar-nav li>a').click(
     function (ev) {
         t = $(ev.target);
-        li = t.parent();
-        if (li.hasClass('dropdown')) return;
-        if (li.hasClass('active')) return;
-        $('#nav-main .active').removeClass('active');
-        t.parent().addClass('active')
         page = t.data('target');
-        console.log(page);
+        if (!pageExists(page)) return
+        if (t.parent().hasClass('dropdown')) return;
+        if (t.parent().hasClass('.active')) return;
+        $('.navbar-nav li.active').removeClass('active');
+        t.parent().addClass('active')
         unloadPage();
         loadPage(page);
     }
