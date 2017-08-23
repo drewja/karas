@@ -4,5 +4,5 @@ EDITOR=code
 
 dev:	
 	code . &>/dev/null &
-	python2 -m SimpleHTTPServer $(PORT) &
+	python2 -m SimpleHTTPServer $(PORT) ./dist &
 
