@@ -69,7 +69,10 @@ body {
 #locations-right {
   display: none;
 }
-
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+}
 
 /* Small devices (tablets, 768px and up) */
 
