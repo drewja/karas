@@ -1,0 +1,8 @@
+scp -r dist jdoe@karasdentalgroup.com:dist
+mv dist karasdenalgroup.com
+cp -r karasdentalgroup.com/ /var/www/
+
+cd /var/www
+sudo chown -R jdoe:www-data .
+sudo find . -type f -exec chmod 0664 {} \;
+sudo find . -type d -exec chmod 2775 {} \;
