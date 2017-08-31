@@ -1,4 +1,3 @@
-
 function collapseMenu() {
     $('.navbar-collapse.in').collapse('hide');
 }
@@ -16,7 +15,7 @@ var pages = {
     'services': $('#services'),
     'team': $('#team')
 }
-var loaders = {
+var loader = {
     'index': function () {
         $.backstretch(["./img/KarasDental_team.tall.jpg"]);
     },
@@ -33,11 +32,11 @@ var unloader = {
     }
 }
 
-var loadPage = function (page) {
+function loadPage(page) {
     collapseMenu();
     $(window).scrollTop(0);
     pages[page].show().addClass('active');
-    if (loaders[page]) loaders[page]();
+    if (loader[page]) loader[page]();
 }
 
 function unloadPage() {
@@ -54,57 +53,19 @@ $('.navbar-nav li>a').click(
     function (ev) {
         t = $(ev.target);
         page = t.data('target');
-        if (!pageExists(page)) return
-        if (t.parent().hasClass('dropdown')) return;
-        if (t.parent().hasClass('.active')) return;
+        if (!pageExists(page) ||
+            t.parent().hasClass('dropdown') ||
+            t.parent().hasClass('.active')) {
+            return;
+        }
+
         $('.navbar-nav li.active').removeClass('active');
-        t.parent().addClass('active')
+        t.parent().addClass('active');
         unloadPage();
         loadPage(page);
     }
 );
 loadPage('index');
-
-var locations = [{
-        "name": "Elroy",
-        "address": {
-            "street": "1104 Academy Street",
-            "city": "Elroy",
-            "state": "Wisconsin",
-            "zip": "53929",
-            "coordinates": ["43.74816", "-89.87307"]
-        },
-        "phone": "6084628282",
-        "fax": "6084628250",
-        "email": ""
-    },
-    {
-        "name": "Necedah",
-        "address": {
-            "street": "1412 Wheelihan Avenue",
-            "city": "Necedah",
-            "state": "Wisconsin",
-            "zip": "54646",
-            "coordinates": ["44.00815", "-90.06928"]
-        },
-        "phone": "6084628282",
-        "fax": "",
-        "email": ""
-    },
-    {
-        "name": "Cottage Grove",
-        "address": {
-            "street": "2848 Cottage Grove Rd.",
-            "city": "Cottage Grove",
-            "state": "Wisconsin",
-            "zip": "53527",
-            "coordinates": ["43.090243", "-89.224976"]
-        },
-        "phone": "6084628282",
-        "fax": "",
-        "email": ""
-    }
-]
 
 function initBranches() {
     var locations = [
