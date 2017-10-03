@@ -68,6 +68,7 @@ body {
 
 #locations-right {
   display: none;
+  margin-top:0px;
 }
 .collapsing {
   -webkit-transition: none;
@@ -93,6 +94,9 @@ body {
   #locations-right {
     display: block;
   }
+  #locations-right>li>a{
+    padding-top:0px;
+  }
   h1 {
     font-size: 96px;
   }
@@ -112,6 +116,7 @@ body {
     width: 180px;
   }
   .navbar-fixed-top {
-    padding: 25px;
+    padding-top:20px;
+    padding-bottom:10px;
   }
 }
