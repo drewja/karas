@@ -4,9 +4,10 @@
 */
 
 body {
-  padding-top: 50px;
-}
-
+   border-top: 78px solid #0c5a53;}
+   .navbar-fixed-top{
+     margin-top:10px;
+   }
 .container.page {
   display: none;
 }
@@ -16,15 +17,15 @@ body {
   width: 100%;
 }
 
-.navbar-brand {
+.navbar-brand{
+  width:120px;
   padding: 0px;
+  margin-right: 10px;
 }
 
-.navbar-brand>img {
-  width: 120px;
-  z-index: 100;
+.navbar-brand > img{
+  width:120px;
 }
-
 
 /* Featurettes
 ------------------------- */
@@ -67,8 +68,10 @@ body {
 /* No media query since this is the default in Bootstrap */
 
 #locations-right {
+  float:right;
   display: none;
   margin-top:0px;
+  padding-right:10px;
 }
 .collapsing {
   -webkit-transition: none;
@@ -78,45 +81,27 @@ body {
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
-  .navbar-nav>li>a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-}
-
-
-/* Medium devices (desktops, 992px and up) */
-
-@media (min-width: 992px) {
   #locations-dropdown {
     display: none;
   }
   #locations-right {
     display: block;
   }
-  #locations-right>li>a{
-    padding-top:0px;
+
+  .navbar-nav>li>a {
+    padding: 16px 0px 0px 10px;
+    color: #040707 !important;
+      font-family: "Lato",sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+}
+  #nav-main>li>a {
+    padding-left:20px;
   }
-  h1 {
-    font-size: 96px;
-  }
+#locations-right>li>a{
+  padding-top:8px;
 }
 
+/* Medium devices (desktops, 992px and up) */
 
-/* Large devices (large desktops, 1200px and up) */
-
-@media (min-width: 1200px) {
-  #content {
-    margin-top: 50px;
-  }
-  .navbar-brand {
-    margin-top: -15px;
-  }
-  .navbar-brand>img {
-    width: 180px;
-  }
-  .navbar-fixed-top {
-    padding-top:20px;
-    padding-bottom:10px;
-  }
-}

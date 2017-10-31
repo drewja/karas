@@ -2,7 +2,7 @@ function collapseMenu() {
     $('.navbar-collapse.in').collapse('hide');
 }
 
-$('#content').click(function (ev) {
+$(document).click(function (ev) {
     if ($('#navbar').hasClass('in')) {
         collapseMenu();
     }
@@ -65,7 +65,14 @@ $('.navbar-nav li>a').click(
         loadPage(page);
     }
 );
+$('.navbar-brand').click(function(ev){
+    unloadPage();
+    loadPage('index');
+    $('.navbar-nav li.active').removeClass('active');
+
+})
 loadPage('index');
+
 
 function initBranches() {
     var locations = [
