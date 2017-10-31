@@ -7,7 +7,14 @@ body {
    border-top: 78px solid #0c5a53;}
    .navbar-fixed-top{
      margin-top:10px;
+     border: 4px solid #0c5a53;
    }
+   .navbar-toggle {
+    border-color: #0c5a53;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: #ddd;
+}
 .container.page {
   display: none;
 }
