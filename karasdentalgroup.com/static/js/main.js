@@ -73,12 +73,17 @@ $('.navbar-brand').click(function(ev){
 })
 loadPage('index');
 
+var showMapInfo ={
+    'elroy': null,
+    'necedah': null,
+    'cottagegrove':null
+}
 
 function initBranches() {
     var locations = [
-        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Elroy Location</span><br />1104 Academy Street<br />Elroy, WI 53929<br /><strong>Phone:</strong><a href="tel:6084628282"> (608) 462-8282</a><br /><strong>Fax:</strong> (608) 462-8250<br /> ', 43.74816, -89.87307, 1],
-        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Necedah Location</span><br />1412 Wheelihan Avenue<br /> Necedah, WI 54646<br /><strong>Phone:</strong><a href="tel:6085657173"> (608) 565-7173</a><br /><strong>Fax:</strong> (608) 565-2734<br /> ', 44.00815, -90.06928, 2],
-        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Cottage Grove Location</span><br />2848 West Cottage Grove Rd.<br />Cottage Grove, WI 53527<br /><strong>Phone:</strong><a href="tel:6088396363"> (608) 839-6363</a><br /> ', 43.090243, -89.224976, 3],
+        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Elroy Location</span><br />1104 Academy Street<br />Elroy, WI 53929<br /><strong>Phone:</strong><a href="tel:6084628282"> (608) 462-8282</a><br /><strong>Fax:</strong> (608) 462-8250<br /> ', 43.74816, -89.87307, 1, 'elroy'],
+        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Necedah Location</span><br />1412 Wheelihan Avenue<br /> Necedah, WI 54646<br /><strong>Phone:</strong><a href="tel:6085657173"> (608) 565-7173</a><br /><strong>Fax:</strong> (608) 565-2734<br /> ', 44.00815, -90.06928, 2, 'necedah'],
+        ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Cottage Grove Location</span><br />2848 West Cottage Grove Rd.<br />Cottage Grove, WI 53527<br /><strong>Phone:</strong><a href="tel:6088396363"> (608) 839-6363</a><br /> ', 43.090243, -89.224976, 3, 'cottagegrove'],
     ];
 
     var map = new google.maps.Map(document.getElementById('map_branches'), {
@@ -89,19 +94,25 @@ function initBranches() {
 
     var infowindow = new google.maps.InfoWindow();
 
-    var marker, i;
+    var i;
 
     for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        let ra = locations[i];
+        let html = ra[0];
+        let lat = ra[1];
+        let long = ra[2];
+        let nam = ra[4];
+
+        let marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, long),
             map: map
         });
 
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
+        f = showMapInfo[nam] = function(){
+            infowindow.setContent(html);
+            infowindow.open(map, marker);
+        };
+
+        google.maps.event.addListener(marker, 'click', f);
     }
 }
