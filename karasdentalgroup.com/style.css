@@ -3,7 +3,11 @@
    blue: #4a5d82
 */
 body {
-    border-top: 78px solid #0c5a53;
+    border-top: 76px solid #0c5a53;
+}
+
+#content {
+    padding-top:20px;
 }
 
 .navbar-fixed-top {
@@ -109,6 +113,10 @@ body {
 
     #locations-right>li>a {
         padding-top: 8px;
+    }
+
+    .page {
+        margin-top: 25px;
     }
 }
 
