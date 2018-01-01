@@ -17,7 +17,7 @@ var pages = {
 }
 var loader = {
     'index': function () {
-        $.backstretch(["./img/teamallweb.jpg"]);
+        $.backstretch([{'url':"./img/teamallweb.jpg", 'alignY':0.2, 'scale':"cover"}]);
     },
     'contact': function () {
         initBranches();

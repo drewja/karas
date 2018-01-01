@@ -2,114 +2,114 @@
    green: #629943,
    blue: #4a5d82
 */
-
 body {
-   border-top: 78px solid #0c5a53;}
-   .navbar-fixed-top{
-     margin-top:10px;
-     border: 4px solid #0c5a53;
-   }
-   .navbar-toggle {
+    border-top: 78px solid #0c5a53;
+}
+
+.navbar-fixed-top {
+    margin-top: 10px;
+    border: 4px solid #0c5a53;
+}
+
+.navbar-toggle {
     border-color: #0c5a53;
 }
+
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
+
 .container.page {
-  display: none;
+    display: none;
 }
 
 #map_branches {
-  height: 400px;
-  width: 100%;
+    height: 400px;
+    width: 100%;
 }
 
-.navbar-brand{
-  width:120px;
-  padding: 0px;
-  margin-right: 10px;
+.navbar-brand {
+    width: 120px;
+    padding: 0px;
+    margin-right: 10px;
 }
 
-.navbar-brand > img{
-  width:120px;
+.navbar-brand > img {
+    width: 120px;
 }
 
 /* Featurettes
 ------------------------- */
-
 .featurette-image {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .featurette-divider {
-  margin: 5rem 0;
-  /* Space out the Bootstrap <hr> more */
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
 }
-
 
 /* Thin out the marketing headings */
-
 .featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-
-
 /* Extra small devices (phones, less than 768px) */
 .navbar-collapse.in {
-  overflow-y: inherit;
-}
-@media (max-width: 768px) {
-  .featurette-image {
-    max-height: 150px;
-  }
+    overflow-y: inherit;
 }
 
+@media (max-width: 768px) {
+    .featurette-image {
+        max-height: 150px;
+    }
+}
 
 /* No media query since this is the default in Bootstrap */
-
 #locations-right {
-  float:right;
-  display: none;
-  margin-top:0px;
-  padding-right:10px;
+    float: right;
+    display: none;
+    margin-top: 0px;
+    padding-right: 10px;
 }
+
 .collapsing {
-  -webkit-transition: none;
-  transition: none;
+    -webkit-transition: none;
+    transition: none;
 }
 
 /* Small devices (tablets, 768px and up) */
-
 @media (min-width: 768px) {
-  #locations-dropdown {
-    display: none;
-  }
-  #locations-right {
-    display: block;
-  }
+    #locations-dropdown {
+        display: none;
+    }
 
-  .navbar-nav>li>a {
-    padding: 16px 0px 0px 10px;
-    color: #040707 !important;
-      font-family: "Lato",sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-}
-  #nav-main>li>a {
-    padding-left:20px;
-  }
-#locations-right>li>a{
-  padding-top:8px;
-}
+    #locations-right {
+        display: block;
+    }
+
+    .navbar-nav>li>a {
+        padding: 16px 0px 0px 10px;
+        color: #040707 !important;
+        font-family: "Lato",sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    #nav-main>li>a {
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+    #locations-right>li>a {
+        padding-top: 8px;
+    }
 }
 
 /* Medium devices (desktops, 992px and up) */
-
