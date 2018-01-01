@@ -1,3 +1,0 @@
-Our Mission Statement
----------------------
-It is the mission of our office to provide the highest level of dental care for all patients in a  professional, caring and comfortable environment. We are committed to listening to our patients concerns, educating them on their oral health, and helping them decide on the best dental treatment for them and their family.  Our team of professional, highly educated, honest, compassionate and committed employees, aim to improve patient health, appearance, self-confidence and overall quality of life.  We are confident that our services and friendly staff will exceed your expectations and make you feel right at home.
