@@ -17,7 +17,7 @@ var pages = {
 }
 var loader = {
     'index': function () {
-        $.backstretch(["./img/KarasDental_team.tall.jpg"]);
+        $.backstretch(["./img/teamallweb.jpg"]);
     },
     'contact': function () {
         initBranches();
