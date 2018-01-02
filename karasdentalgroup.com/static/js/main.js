@@ -15,9 +15,28 @@ var pages = {
     'services': $('#services'),
     'team': $('#team')
 }
+
+
 var loader = {
     'index': function () {
-        $.backstretch([{'url':"./img/teamallweb.jpg", 'alignY':0.2, 'scale':"cover"}]);
+        let bg = {'url':"./img/teamallweb.jpg", 'alignY':0.2, 'scale':"cover", 'orientation': "landscape"};            
+        let w = $( window ).width();
+        if (w < 928) {
+            loadPage('about');
+            return;
+        }
+
+        else $.backstretch([bg]);
+        $(window).on("resize", function(){
+            
+            let w = $( window ).width();
+            if (w < 928) {
+                if ($("body").data("backstretch")) $.backstretch('destroy');
+                unloadPage();
+                loadPage('about');
+            }
+        })
+
     },
     'contact': function () {
         initBranches();
@@ -26,6 +45,7 @@ var loader = {
 var unloader = {
     'index': function () {
         if ($("body").data("backstretch")) $.backstretch('destroy');
+        $(window).off("resize");
     },
     'contact': function () {
         $('#map_branches').empty();
@@ -36,10 +56,13 @@ function loadPage(page) {
     collapseMenu();
     $(window).scrollTop(0);
     pages[page].show().addClass('active');
+    let q = '.navbar-nav li>a[data-target="' + page + '"]';
+    $(q).parent().addClass('active');
     if (loader[page]) loader[page]();
 }
 
 function unloadPage() {
+    $('.navbar-nav li.active').removeClass('active');
     id = $('.container.page.active').hide().removeClass('active').attr('id');
     if (unloader[id]) unloader[id]();
 }
@@ -58,10 +81,8 @@ $('.navbar-nav li>a').click(
             t.parent().hasClass('.active')) {
             return;
         }
-
-        $('.navbar-nav li.active').removeClass('active');
-        t.parent().addClass('active');
         unloadPage();
+        t.parent().addClass('active');
         loadPage(page);
     }
 );
