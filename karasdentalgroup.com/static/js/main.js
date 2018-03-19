@@ -1,13 +1,3 @@
-function collapseMenu() {
-    $('.navbar-collapse.in').collapse('hide');
-}
-
-$(document).click(function(ev) {
-    if ($('#navbar').hasClass('in')) {
-        collapseMenu();
-    }
-})
-
 var pages = {
     '/': $('#index'),
     '/contact': $('#contact'),
@@ -15,6 +5,7 @@ var pages = {
     '/services': $('#services'),
     '/team': $('#team')
 }
+
 var paths = {}
 for (i in pages) {
     paths[pages[i].attr('id')] = i;
@@ -37,19 +28,17 @@ var loader = {
             }
         })
 
-    },
-    '/contact': function() {
-        initBranches();
     }
 }
 var unloader = {
     '/': function() {
         if ($("body").data("backstretch")) $.backstretch('destroy');
         $(window).off("resize");
-    },
-    '/contact': function() {
-        $('#map_branches').empty();
     }
+}
+
+function collapseMenu() {
+    $('.navbar-collapse.in').collapse('hide');
 }
 
 function loadPage(page) {
@@ -78,22 +67,6 @@ function goTo(page) {
     unloadPage();
     routeLocation();
 }
-$('.pathLink').click(
-    function(ev) {
-        ev.preventDefault();
-        t = $(ev.target);
-        page = t.attr('href');
-        if (page == undefined) {
-            page = t.parent().attr('href');
-        }
-        //  if (!pageExists(page) ||
-        //    t.parent().hasClass('dropdown') ||
-        //  t.parent().hasClass('.active')) {
-        //return;
-        //}
-        goTo(page);
-    }
-);
 
 function pageExists(page) {
     if (pages[page]) return true;
@@ -112,8 +85,6 @@ function routeLocation() {
     page = document.location.pathname;
     loadPage(page);
 }
-
-
 
 function initBranches() {
     var showMapInfo = {
@@ -159,6 +130,30 @@ function initBranches() {
 }
 
 function init() {
+
+    $(document).click(function(ev) {
+        if ($('#navbar').hasClass('in')) {
+            collapseMenu();
+        }
+    })
+
+    $('.pathLink').click(
+        function(ev) {
+            ev.preventDefault();
+            t = $(ev.target);
+            page = t.attr('href');
+            if (page == undefined) {
+                page = t.parent().attr('href');
+            }
+            //  if (!pageExists(page) ||
+            //    t.parent().hasClass('dropdown') ||
+            //  t.parent().hasClass('.active')) {
+            //return;
+            //}
+            goTo(page);
+        }
+    );
+
     routeLocation();
 }
 init();
