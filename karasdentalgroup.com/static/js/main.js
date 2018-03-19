@@ -2,61 +2,63 @@ function collapseMenu() {
     $('.navbar-collapse.in').collapse('hide');
 }
 
-$(document).click(function (ev) {
+$(document).click(function(ev) {
     if ($('#navbar').hasClass('in')) {
         collapseMenu();
     }
 })
 
 var pages = {
-    'index': $('#index'),
-    'contact': $('#contact'),
-    'about': $('#about'),
-    'services': $('#services'),
-    'team': $('#team')
+    '/': $('#index'),
+    '/contact': $('#contact'),
+    '/about': $('#about'),
+    '/services': $('#services'),
+    '/team': $('#team')
+}
+var paths = {}
+for (i in pages) {
+    paths[pages[i].attr('id')] = i;
 }
 
-
 var loader = {
-    'index': function () {
-        let bg = {'url':"./img/teamallweb.jpg", 'alignY':0.2, 'scale':"cover", 'orientation': "landscape"};            
-        let w = $( window ).width();
+    '/': function() {
+        let bg = { 'url': "./img/teamallweb.jpg", 'alignY': 0.2, 'scale': "cover", 'orientation': "landscape" };
+        let w = $(window).width();
         if (w < 928) {
-            loadPage('about');
+            loadPage('/about');
             return;
-        }
+        } else $.backstretch([bg]);
+        $(window).on("resize", function() {
 
-        else $.backstretch([bg]);
-        $(window).on("resize", function(){
-            
-            let w = $( window ).width();
+            let w = $(window).width();
             if (w < 928) {
                 if ($("body").data("backstretch")) $.backstretch('destroy');
-                unloadPage();
-                loadPage('about');
+                goTo('/about');
             }
         })
 
     },
-    'contact': function () {
+    '/contact': function() {
         initBranches();
     }
 }
 var unloader = {
-    'index': function () {
+    '/': function() {
         if ($("body").data("backstretch")) $.backstretch('destroy');
         $(window).off("resize");
     },
-    'contact': function () {
+    '/contact': function() {
         $('#map_branches').empty();
     }
 }
 
 function loadPage(page) {
+    if (page != '/')
+        $('.pathLink[href="' + page + '"]').parent().addClass('active');
     collapseMenu();
     $(window).scrollTop(0);
     pages[page].show().addClass('active');
-    let q = '.navbar-nav li>a[data-target="' + page + '"]';
+    let q = '.navbar-nav li>a[data-target="/' + page + '"]';
     $(q).parent().addClass('active');
     if (loader[page]) loader[page]();
 }
@@ -64,43 +66,61 @@ function loadPage(page) {
 function unloadPage() {
     $('.navbar-nav li.active').removeClass('active');
     id = $('.container.page.active').hide().removeClass('active').attr('id');
-    if (unloader[id]) unloader[id]();
+    page = paths[id];
+    if (unloader[page]) unloader[page]();
 }
+
+function goTo(page) {
+    if (!pageExists(page) || isCurrentPage(page)) {
+        return;
+    }
+    history.pushState('', '', page);
+    unloadPage();
+    routeLocation();
+}
+$('.pathLink').click(
+    function(ev) {
+        ev.preventDefault();
+        t = $(ev.target);
+        page = t.attr('href');
+        if (page == undefined) {
+            page = t.parent().attr('href');
+        }
+        //  if (!pageExists(page) ||
+        //    t.parent().hasClass('dropdown') ||
+        //  t.parent().hasClass('.active')) {
+        //return;
+        //}
+        goTo(page);
+    }
+);
 
 function pageExists(page) {
     if (pages[page]) return true;
     return false;
 }
 
-$('.navbar-nav li>a').click(
-    function (ev) {
-        t = $(ev.target);
-        page = t.data('target');
-        if (!pageExists(page) ||
-            t.parent().hasClass('dropdown') ||
-            t.parent().hasClass('.active')) {
-            return;
-        }
-        unloadPage();
-        t.parent().addClass('active');
-        loadPage(page);
-    }
-);
-$('.navbar-brand').click(function(ev){
-    unloadPage();
-    loadPage('index');
-    $('.navbar-nav li.active').removeClass('active');
-
-})
-loadPage('index');
-
-var showMapInfo ={
-    'elroy': null,
-    'necedah': null,
-    'cottagegrove':null
+function currentPage() {
+    return paths[$('.container.page.active').attr('id')];
 }
 
+function isCurrentPage(page) {
+    return page == currentPage();
+}
+
+function routeLocation() {
+    page = document.location.pathname;
+    loadPage(page);
+}
+
+
+
 function initBranches() {
+    var showMapInfo = {
+        'elroy': null,
+        'necedah': null,
+        'cottagegrove': null
+    }
     var locations = [
         ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Elroy Location</span><br />1104 Academy Street<br />Elroy, WI 53929<br /><strong>Phone:</strong><a href="tel:6084628282"> (608) 462-8282</a><br /><strong>Fax:</strong> (608) 462-8250<br /> ', 43.74816, -89.87307, 1, 'elroy'],
         ['<span style="font-size:14px; font-weight:bold; color:#5AA426;">Necedah Location</span><br />1412 Wheelihan Avenue<br /> Necedah, WI 54646<br /><strong>Phone:</strong><a href="tel:6085657173"> (608) 565-7173</a><br /><strong>Fax:</strong> (608) 565-2734<br /> ', 44.00815, -90.06928, 2, 'necedah'],
@@ -129,7 +149,7 @@ function initBranches() {
             map: map
         });
 
-        f = showMapInfo[nam] = function(){
+        f = showMapInfo[nam] = function() {
             infowindow.setContent(html);
             infowindow.open(map, marker);
         };
@@ -137,3 +157,8 @@ function initBranches() {
         google.maps.event.addListener(marker, 'click', f);
     }
 }
+
+function init() {
+    routeLocation();
+}
+init();
