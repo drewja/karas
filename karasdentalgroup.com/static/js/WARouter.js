@@ -6,21 +6,21 @@ function war(endpoints, loaders, unloaders) {
     }
 
     var go = function (page) {
-        if (pageExists(page) && !isCurrentPage(page)) {
+        if (!isCurrentPage(page) && pageExists(page)) {
             history.pushState('', '', page);
             unloadPage();
             routeLocation();
         }
     }
 
-    function loadPage(uri) {
-        if (uri != '/') $('.pathLink[href="' + uri + '"]').parent().addClass('active');
+    function load(page) {
+        if (page != '/') $('.warEndpointLink[href="' + page + '"]').parent().addClass('active');
         collapseMenu();
         $(window).scrollTop(0);
-        endpoints[uri].show().addClass('active');
-        let q = '.navbar-nav li>a[data-target="/' + uri + '"]';
+        endpoints[page].show().addClass('active');
+        let q = '.navbar-nav li>a[data-target="/' + page + '"]';
         $(q).parent().addClass('active');
-        if (loaders[uri]) loaders[uri](go);
+        if (loaders[page]) loaders[page](go);
     }
 
     function unloadPage(){
@@ -31,8 +31,9 @@ function war(endpoints, loaders, unloaders) {
     }
 
     function routeLocation() {
+        // Read the pathname from the address bar and load the cooresponding page
         page = document.location.pathname;
-        loadPage(page);
+        load(page);
     }
 
     function pageExists(page) {
@@ -47,7 +48,7 @@ function war(endpoints, loaders, unloaders) {
     function isCurrentPage(page) {
         return page == currentPage();
     }
-    /* initialize to the current pathname of the addressbar */
+    /* initialize to the current pathname of the address bar */
     routeLocation()
     return go;
 }

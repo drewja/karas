@@ -11,8 +11,9 @@ $(document).click(function(ev) {
 
 var reroute = war(endpoints, loaders, unloaders);
 
-$('.pathLink').click(
+$('.warEndpointLink').click(
     function(ev) {
+        console.log('clicked ', ev);
         ev.preventDefault();
         t = $(ev.target);
         page = t.attr('href');
