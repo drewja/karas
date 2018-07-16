@@ -1,13 +1,9 @@
 function war(endpoints, loaders, unloaders) {
-    var paths = {};
-    /* paths = a map of element id attributes to target paths */
-    for (i in endpoints) {
-        paths[endpoints[i].attr('id')] = i;
-    }
 
-    var go = function (page) {
-        if (!isCurrentPage(page) && pageExists(page)) {
-            history.pushState('', '', page);
+    // The only interface to this object after initalization;
+    var go = function(target) {
+        if (!isCurrentPage(target) && pageExists(target)) {
+            history.pushState('', '', target);
             unloadPage();
             routeLocation();
         }
@@ -25,14 +21,14 @@ function war(endpoints, loaders, unloaders) {
 
     function unloadPage(){
         $('.navbar-nav li.active').removeClass('active');
-        id = $('.container.page.active').hide().removeClass('active').attr('id');
-        page = paths[id];
+        let id = $('.container.page.active').hide().removeClass('active').attr('id');
+        let page = paths[id];
         if (unloaders[page]) unloaders[page]();
     }
 
     function routeLocation() {
         // Read the pathname from the address bar and load the cooresponding page
-        page = document.location.pathname;
+        let page = document.location.pathname;
         load(page);
     }
 
@@ -48,7 +44,28 @@ function war(endpoints, loaders, unloaders) {
     function isCurrentPage(page) {
         return page == currentPage();
     }
+
+    var paths = {};
+    /* paths is a map of element id attributes to target paths */
+    for (i in endpoints) {
+        paths[endpoints[i].attr('id')] = i;
+    }
+
     /* initialize to the current pathname of the address bar */
     routeLocation()
+
+    // set up the click handler for navigation
+    $('.warEndpointLink').click(
+        function(ev) {
+            console.log('clicked ', ev);
+            ev.preventDefault();
+            let t = $(ev.target);
+            let targetPage = t.attr('href');
+            if (targetPage == undefined) {
+                targetPage = t.parent().attr('href');
+            }
+            go(targetPage);
+        }
+    );
     return go;
 }

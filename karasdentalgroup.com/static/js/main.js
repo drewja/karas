@@ -9,20 +9,7 @@ $(document).click(function(ev) {
     }
 })
 
-var reroute = war(endpoints, loaders, unloaders);
-
-$('.warEndpointLink').click(
-    function(ev) {
-        console.log('clicked ', ev);
-        ev.preventDefault();
-        t = $(ev.target);
-        page = t.attr('href');
-        if (page == undefined) {
-            page = t.parent().attr('href');
-        }
-        reroute(page);
-    }
-);
+war(endpoints, loaders, unloaders);
 
 function initBranches() {
     var showMapInfo = {
