@@ -1,6 +1,6 @@
 function war(endpoints, loaders, unloaders) {
 
-    // The only interface to this object after initalization;
+    // The only interface to this object after initialization;
     var go = function(target) {
         if (!isCurrentPage(target) && pageExists(target)) {
             history.pushState('', '', target);
@@ -10,7 +10,7 @@ function war(endpoints, loaders, unloaders) {
     }
 
     function load(page) {
-        if (page != '/') $('.warEndpointLink[href="' + page + '"]').parent().addClass('active');
+        if (page !== '/') $('.warEndpointLink[href="' + page + '"]').parent().addClass('active');
         collapseMenu();
         $(window).scrollTop(0);
         endpoints[page].show().addClass('active');
@@ -19,7 +19,7 @@ function war(endpoints, loaders, unloaders) {
         if (loaders[page]) loaders[page](go);
     }
 
-    function unloadPage(){
+    function unloadPage() {
         $('.navbar-nav li.active').removeClass('active');
         let id = $('.container.page.active').hide().removeClass('active').attr('id');
         let page = paths[id];
@@ -27,7 +27,7 @@ function war(endpoints, loaders, unloaders) {
     }
 
     function routeLocation() {
-        // Read the pathname from the address bar and load the cooresponding page
+        // Read the pathname from the address bar and load the corresponding page
         let page = document.location.pathname;
         load(page);
     }
@@ -42,17 +42,17 @@ function war(endpoints, loaders, unloaders) {
     }
 
     function isCurrentPage(page) {
-        return page == currentPage();
+        return page === currentPage();
     }
 
     var paths = {};
     /* paths is a map of element id attributes to target paths */
-    for (i in endpoints) {
+    for (var i in endpoints) {
         paths[endpoints[i].attr('id')] = i;
     }
 
     /* initialize to the current pathname of the address bar */
-    routeLocation()
+    routeLocation();
 
     // set up the click handler for navigation
     $('.warEndpointLink').click(
@@ -61,7 +61,7 @@ function war(endpoints, loaders, unloaders) {
             ev.preventDefault();
             let t = $(ev.target);
             let targetPage = t.attr('href');
-            if (targetPage == undefined) {
+            if (targetPage === undefined) {
                 targetPage = t.parent().attr('href');
             }
             go(targetPage);

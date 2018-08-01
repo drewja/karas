@@ -3,17 +3,17 @@ function isSmall() {
     return false;
 }
 var endpoints = {
-    '/': $('#index'),
-    '/contact': $('#contact'),
-    '/about': $('#about'),
-    '/services': $('#services'),
-    '/team': $('#team')
-}
-/* pages = a map of paths to taget element objects */
+        '/': $('#index'),
+        '/contact': $('#contact'),
+        '/about': $('#about'),
+        '/services': $('#services'),
+        '/team': $('#team')
+    }
+    /* pages = a map of paths to target element objects */
 
 /* loader = a map of paths to callback functions invoked with a route function after routing the uri */
 var loaders = {
-    '/': function (redirect) {
+    '/': function(redirect) {
         let bg = {
             'url': "./img/teamallweb.jpg",
             'alignY': 0.2,
@@ -35,7 +35,7 @@ var loaders = {
     }
 }
 var unloaders = {
-    '/': function () {
+    '/': function() {
         if ($("body").data("backstretch")) $.backstretch('destroy');
         $(window).off("resize");
     }
