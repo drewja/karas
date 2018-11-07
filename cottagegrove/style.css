@@ -1,0 +1,114 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 600px auto;
+    /*   header sidebar footer (heights)  */
+    grid-template-columns: 250px auto;
+    /* sidebar container (widths) */
+}
+
+header {
+    background: rgb(179, 255, 232);
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-rows: auto 50px;
+    /*head nav */
+}
+
+.navbar>ul {
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.navbar>ul>li {
+    border-radius: 2px;
+    border: 1px solid rgb(83, 115, 201);
+}
+
+.head {
+    display: inline-grid;
+    grid-template-columns: auto 50%;
+    /* logo info */
+}
+
+.info {
+    background: rgb(85, 105, 102);
+}
+
+.sidebar {
+    border-radius: 0% 100% 12% 88% / 0% 88% 12% 100%;
+    grid-row: 2 / span 2;
+    max-height: 250px;
+    background-image: linear-gradient(-225deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 40%, rgba(0, 255, 255, 0) 60%, #0ff 100%), linear-gradient(45deg, #3023AE 0%, #FF0099 100%);
+}
+
+.item {
+    border-radius: 25px;
+    border: 2px solid rgb(83, 115, 201);
+    min-height: 400px;
+}
+
+.item-wide {
+    background: whitesmoke;
+    grid-column: span 2;
+}
+
+.container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+}
+
+@media (max-width: 1600px) {
+    body {
+        grid-template-rows: auto 600px auto;
+        /*   header sidebar footer (heights)  */
+        grid-template-columns: 100px auto;
+        /* sidebar container (widths) */
+    }
+    .container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .head {
+        grid-template-columns: auto;
+        /* logo info */
+        grid-template-rows: 50% 50%;
+    }
+    .info {
+        height: 100%;
+    }
+    .container {
+        grid-template-columns: auto;
+    }
+    body {
+        grid-template-rows: auto 600px auto;
+        /*   header sidebar footer (heights)  */
+        grid-template-columns: 0px auto;
+        /* sidebar container (widths) */
+    }
+    header {
+        grid-template-rows: auto auto;
+        /* head nav */
+    }
+    .navbar>ul {
+        grid-auto-flow: row;
+    }
+    .navbar>ul>li {
+        min-height: 50px;
+    }
+    .sidebar>ul {
+        display: none;
+    }
+    .item-wide {
+        background: whitesmoke;
+        grid-column: auto;
+    }
+}
