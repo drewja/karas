@@ -19,26 +19,26 @@ $("#map_branches_list").on('click', function(event){
 
 var pages = {'main': pageContainer.html()};
 
-navEventHandler = function(target){
+navEventHandler = function(event){
     event.preventDefault();
-    el = $(target);
+    el = $(event.target);
     if (el.hasClass("dropdown-toggle") || el.hasClass("prevent-nav")) return;
     let href = el.attr('href');
-    if (!href) target = el.parent().attr('href');
+    if (!href) href = el.parent().attr('href');
     _loadPage(href);
 };
 
-_loadPage = function(target){
+_loadPage = function(href){
 
-    if (target in pages) return pageContainer.html(pages[target]);
+    if (href in pages) return pageContainer.html(pages[href]);
 
-    let url = "pages/" + target + ".html";
+    let url = "pages/" + href + ".html";
 
     $.get(url, 'html')
         .done(
             function(htmltext){
-                pages[target] = htmltext;
-                _loadPage(target);
+                pages[href] = htmltext;
+                _loadPage(href);
 
             })
         .fail(function(e) {
@@ -50,5 +50,5 @@ _loadPage = function(target){
 var go = function(href){
     $('.nav-link[href="'+ href + '"]').click();
 }
-$('.nav-link, .dropdown-item').on('click', (event) => navEventHandler(event.target));
+$('.nav-link, .dropdown-item').on('click', (event) => navEventHandler(event));
 
