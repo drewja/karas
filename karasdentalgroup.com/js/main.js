@@ -26,6 +26,7 @@ navEventHandler = function(event){
     let href = el.attr('href');
     if (!href) href = el.parent().attr('href');
     _loadPage(href);
+    window.scrollTo(0,0)
 };
 
 _loadPage = function(href){
@@ -46,7 +47,7 @@ _loadPage = function(href){
             });
 
 }
-
+    
 var go = function(href){
     $('.nav-link[href="'+ href + '"]').click();
 }
