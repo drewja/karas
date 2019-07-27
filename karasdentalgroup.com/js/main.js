@@ -3,7 +3,7 @@ var pageContainer = $("#pageTarget");
 
 
 var _map_loaded = 0;
-map = ()=> newMap(document.getElementById("map_branches"), $("#map_branches_list > button"));
+map = ()=> newMap(document.getElementById("map_branches"), document.getElementById("map_branches_list"));
 
 $('#schedule-modal').on('show.bs.modal', function (event) {
     if (!_map_loaded) map();
@@ -14,7 +14,7 @@ $("#map_branches_list").on('click', function(event){
     let button = $(event.target);
     $("#map_branches_list > button").removeClass('active');
     button.addClass('active');
-    showMapInfo[button.html()]();
+    showMapInfo[button.attr('id')]();
 });
 
 var pages = {'main': pageContainer.html()};
