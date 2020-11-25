@@ -116,7 +116,7 @@ textarea {
    ========================================================================== */
 
 .gradient-bg{
-    background-image: radial-gradient(circle farthest-corner at 2000px 2000px, #073f70, #ffffff);
+    background-image: radial-gradient(circle farthest-corner at 2000px 2000px, #08e8de, #ffffff);
     height: 100%;
 }
 
