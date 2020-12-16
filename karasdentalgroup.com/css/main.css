@@ -93,23 +93,6 @@ textarea {
     padding: 0.2em 0;
 }
 
-.carousel-item{
-    height: 420px;
-    overflow-y: hidden;
-    width: 560px;
-}
-.slideshow { 
-    position: relative; 
-    width:100%;
-    max-width: 560px;
-    overflow-x: hidden;
-}
-
-#slideshow > div {
-    display: none;
-    position: absolute;
-    overflow: hidden;
-}
 
 /* ==========================================================================
    Author's custom styles
@@ -131,7 +114,7 @@ textarea {
 }
 
 .main-view {
-    max-width: 1160px;
+    max-width: 1460px;
 }
 
 
