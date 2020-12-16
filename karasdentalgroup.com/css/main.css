@@ -99,7 +99,7 @@ textarea {
    ========================================================================== */
 
 .gradient-bg{
-    background-image: radial-gradient(circle farthest-corner at 2000px 2000px, #08e8de, #ffffff);
+    background-image: radial-gradient(circle farthest-corner at 2000px 2000px, #f0f0f0, #ffffff);
     height: 100%;
 }
 

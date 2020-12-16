@@ -1,12 +1,12 @@
 
 function newElem(tag, cssClass, parent=undefined){
     const elem = document.createElement(tag);
-    elem.setAttribute('class', cssClass);
+    if (cssClass) elem.setAttribute('class', cssClass);
     if(parent) return parent.appendChild(elem);
+
     return elem;
 
 }
-
 
 async function readInto(fname, targetElement) {
 	let response = await fetch(fname);
@@ -20,7 +20,9 @@ class HeadShot extends HTMLElement{
         this.attachShadow({mode: 'open'}); // sets and returns 'this.shadowRoot'
 
         const name = this.hasAttribute('name') ? this.getAttribute('name') : '';   
-     
+        const title = this.hasAttribute('title') ? this.getAttribute('title') : '';
+        const locations = this.hasAttribute('location') ? this.getAttribute('location') : '';
+
         const wrapper = document.createElement('div');
         wrapper.setAttribute('class','wrapper');
 
@@ -36,8 +38,10 @@ class HeadShot extends HTMLElement{
         const bioHeading = this.hasAttribute('heading') ? this.getAttribute('heading') : '';  
         let bioPath = `./team/${name}/${name}.bio`;
         const bio = newElem('div', 'bio', wrapper);
-        const bioh = newElem('h3', '', bio);
+        const bioh = newElem('h2', '', bio);
         bioh.textContent = bioHeading;
+        const titleElem = newElem('small', '', bioh);
+        titleElem.textContent += ' ' + title;
         const biop = newElem('p', 'biop', bio);
         readInto(bioPath, biop);
 
@@ -45,7 +49,9 @@ class HeadShot extends HTMLElement{
         const style = document.createElement('style');
 
         style.textContent = `
-
+            small {
+                font-weight: lighter;
+            }
             .wrapper { 
                 padding:10px;
                 display: grid;
