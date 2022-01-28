@@ -1,8 +1,4 @@
-var showMapInfo = {
-    'Elroy': null,
-    'Necedah': null,
-    'CottageGrove': null
-}
+
 function htmlToElement(html) {
     var w = document.createElement('div');
     html = html.trim(); // Never return a text node of whitespace as the result
@@ -75,6 +71,13 @@ function getNearestLocation(addr){
 
 }
 */
+
+// A structure to be populated with functions bound to buttons
+var showMapInfo = {
+    'Elroy': null,
+    'Necedah': null,
+    'CottageGrove': null
+}
 function newMap(mapelem, buttonContainer){
     var map = new google.maps.Map(mapelem, {
         zoom: 7,
